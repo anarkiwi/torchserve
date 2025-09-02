@@ -8,6 +8,8 @@ on:
 jobs:
   buildx-torchserve:
     runs-on: ubuntu-latest
+    environment:
+      name: "release"
     steps:
     - uses: actions/checkout@v5
       with:
@@ -42,6 +44,8 @@ jobs:
       if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'
   buildx-orin-torchserve:
     runs-on: ubuntu-latest
+    environment:
+      name: "release"
     steps:
     - uses: actions/checkout@v5
       with:
@@ -76,6 +80,8 @@ jobs:
       if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'
   buildx-cuda-torchserve:
     runs-on: ubuntu-latest
+    environment:
+      name: "release"
     steps:
     - uses: actions/checkout@v5
       with:
