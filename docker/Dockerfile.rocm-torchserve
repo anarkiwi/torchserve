@@ -19,7 +19,7 @@ ENTRYPOINT ["/torchserve/torchserve-entrypoint.sh"]
 # From https://rocm.docs.amd.com/en/latest/how_to/pytorch_install/pytorch_install.html
 # docker run command, should return True if ROCm is available.
 #
-# $ git clone https://github.com/iqtlabs/torchserve
+# $ git clone https://github.com/anarkiwi/torchserve
 # $ cd torchserve
-# $ docker build -f docker/Dockerfile.rocm-torchserve . -t iqtlabs/rocm-torchserve
-# $ docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --device=/dev/kfd --device=/dev/dri --group-add video --ipc=host --shm-size 8G --entrypoint python3 -ti iqtlabs/rocm-torchserve -c "import torch ; print(torch.cuda.is_available())"
+# $ docker build -f docker/Dockerfile.rocm-torchserve . -t anarkiwi/rocm-torchserve
+# $ docker run --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --device=/dev/kfd --device=/dev/dri --group-add video --ipc=host --shm-size 8G --entrypoint python3 -ti anarkiwi/rocm-torchserve -c "import torch ; print(torch.cuda.is_available())"

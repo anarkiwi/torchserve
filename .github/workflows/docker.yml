@@ -9,7 +9,7 @@ jobs:
   buildx-torchserve:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 0
     - name: Get the version
@@ -26,11 +26,9 @@ jobs:
       id: buildx
       uses: docker/setup-buildx-action@v3
     - name: Docker Login
-      env:
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
       run: |
-        echo "${DOCKER_PASSWORD}" | docker login --username "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      if: github.repository == 'iqtlabs/torchserve' && github.event_name == 'push'
+        docker login --username "${{ secrets.DOCKER_USERNAME }}" --passsword "${{ secrets.DOCKER_USERNAME }}"
+      if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'
     - name: Build and push platforms
       uses: docker/build-push-action@v6
       with:
@@ -38,12 +36,12 @@ jobs:
         file: docker/Dockerfile.torchserve
         platforms: linux/amd64,linux/arm64
         push: true
-        tags: iqtlabs/torchserve:${{ steps.change_version.outputs.VERSION }}
-      if: github.repository == 'iqtlabs/torchserve' && github.event_name == 'push'
+        tags: anarkiwi/torchserve:${{ steps.change_version.outputs.VERSION }}
+      if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'
   buildx-orin-torchserve:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 0
     - name: Get the version
@@ -64,7 +62,7 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
       run: |
         echo "${DOCKER_PASSWORD}" | docker login --username "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      if: github.repository == 'iqtlabs/torchserve' && github.event_name == 'push'
+      if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'
     - name: Build and push platforms
       uses: docker/build-push-action@v6
       with:
@@ -72,12 +70,12 @@ jobs:
         file: docker/Dockerfile.orin-torchserve
         platforms: linux/arm64
         push: true
-        tags: iqtlabs/orin-torchserve:${{ steps.change_version.outputs.VERSION }}
-      if: github.repository == 'iqtlabs/torchserve' && github.event_name == 'push'
+        tags: anarkiwi/orin-torchserve:${{ steps.change_version.outputs.VERSION }}
+      if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'
   buildx-cuda-torchserve:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 0
     - name: Get the version
@@ -98,7 +96,7 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
       run: |
         echo "${DOCKER_PASSWORD}" | docker login --username "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      if: github.repository == 'iqtlabs/torchserve' && github.event_name == 'push'
+      if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'
     - name: Build and push platforms
       uses: docker/build-push-action@v6
       with:
@@ -106,5 +104,5 @@ jobs:
         file: docker/Dockerfile.cuda-torchserve
         platforms: linux/amd64
         push: true
-        tags: iqtlabs/cuda-torchserve:${{ steps.change_version.outputs.VERSION }}
-      if: github.repository == 'iqtlabs/torchserve' && github.event_name == 'push'
+        tags: anarkiwi/cuda-torchserve:${{ steps.change_version.outputs.VERSION }}
+      if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'

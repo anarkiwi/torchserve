@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.6.0-runtime-ubuntu22.04
+FROM nvidia/cuda:12.9.0-runtime-ubuntu24.04
 ARG PIP_CACHE
 ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /root
@@ -18,6 +18,6 @@ HEALTHCHECK CMD /torchserve/healthcheck.sh || exit 1
 ENTRYPOINT ["/torchserve/torchserve-entrypoint.sh"]
 
 # see Dockerfile.torchserve for example, but use
-# docker run --gpus all -ti iqtlabs/cuda-torchserve:latest bash
+# docker run --gpus all -ti anarkiwi/cuda-torchserve:latest bash
 # ensure nvidia-container-toolkit is installed (https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 # CUDA version on the host must be same or later, than that in this container.
