@@ -23,7 +23,7 @@ apt-get update && \
     zlib1g-dev && \
   $(dirname $0)/clone-torchserve.sh && \
   cd serve && \
-  python3 ./ts_scripts/install_dependencies.py --environment prod --skip-torch-install $* && \
+  python3 ./ts_scripts/install_dependencies.py --environment prod --skip_torch_install $* && \
   pip install . && \
   cd .. && \
   rm -rf serve && \
