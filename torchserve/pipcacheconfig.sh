@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ "$PIP_CACHE" == "" ] ; then
+if [[ "$PIP_CACHE" == "" ]] ; then
 	echo not using pip cache
 	exit 0
 fi
 
-trusted_host=$(echo $PIP_CACHE|grep -Po '://\K[^/]+')
+trusted_host=$(echo $PIP_CACHE|grep -Po '://\K[^/:]+')
 cat > /etc/pip.conf <<- EOC
 [global]
 index-url = $PIP_CACHE
