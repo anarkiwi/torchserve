@@ -34,7 +34,7 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
       if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'
     - name: Build and push platforms
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: docker/Dockerfile.orin-torchserve
@@ -66,7 +66,7 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
       if: github.repository == 'anarkiwi/torchserve' && github.event_name == 'push'
     - name: Build and push platforms
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         context: .
         file: docker/Dockerfile.cuda-torchserve
